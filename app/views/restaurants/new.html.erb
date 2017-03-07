@@ -1,1 +1,14 @@
-Create New Restaurant
+<h1>New Restaurant</h1>
+<%= form_for @restaurant do |f| %>
+  <p><%= f.label :name %>
+  <%= f.text_field :name %></p>
+  <p><%= f.label :address %>
+  <%= f.text_field :address %></p>
+  <p><%= f.label :borough %>
+  <%= f.text_field :borough %></p>
+  <p><%= f.label :phone %>
+  <%= f.text_field :phone %></p>
+  <p><%= f.label :cuisine %>
+  <%= f.text_field :cuisine %></p>
+  <%= f.submit %>
+<% end %>
