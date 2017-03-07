@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307113512) do
+ActiveRecord::Schema.define(version: 20170307123622) do
 
   create_table "foodreviews", force: :cascade do |t|
     t.integer "restaurant_id"
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 20170307113512) do
     t.integer "user_id"
     t.text    "review"
     t.integer "rating"
+    t.decimal "price"
   end
 
   create_table "foods", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
