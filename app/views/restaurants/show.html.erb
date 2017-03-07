@@ -3,3 +3,11 @@
 <%= number_to_phone(@restaurant.phone, area_code: true) %><br>
 <%= @restaurant.cuisine %> | <%= @restaurant.borough %><br>
 <%= link_to "View on Google Maps", "https://www.google.com/maps/search/#{@restaurant.address}" %>
+
+<p>Add menu item</p>
+
+<h3>What's good here?</h3>
+
+<%= @restaurant.food.each do |food| %>
+  <%= food.name %>
+<% end %>
