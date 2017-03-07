@@ -3,9 +3,8 @@
 <h3><%= link_to "Add New Restaurant", new_restaurant_path %></h3>
 
 <ul>
-<%= @restaurants.each do |restaurant| %>
+<% @restaurants.each do |restaurant| %>
   <li><%= link_to restaurant.name, restaurant_path(restaurant) %><br>
-    <%= restaurant.borough %><br>
-    <%= restaurant.cuisine %>
+    <%= restaurant.cuisine %> | <%= restaurant.borough %>
 <% end %>
 </ul>
