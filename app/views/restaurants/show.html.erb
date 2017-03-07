@@ -1,1 +1,5 @@
-Restaurant Show Page
+<h2><%= @restaurant.name %></h2>
+<%= @restaurant.address %><br>
+<%= number_to_phone(@restaurant.phone, area_code: true) %><br>
+<%= @restaurant.cuisine %> | <%= @restaurant.borough %><br>
+<%= link_to "View on Google Maps", "https://www.google.com/maps/search/#{@restaurant.address}" %>
