@@ -1,0 +1,14 @@
+<h3>New Food Entry for <%= @foodreview.restaurant.name %></h3>
+<%= form_for(@foodreview) do |f| %>
+  <%= f.fields_for :food do |g| %>
+    <p><%= g.label :name, "Menu Item Name" %>
+    <%= g.text_field :name %></p>
+  <% end %>
+  <p><%= f.label :price %>
+  <%= f.decimal :price %></p>
+  <p><%= f.label :rating %>
+  <%= f.number_field :rating %></p>
+  <p><%= f.label :review %>
+  <%= f.text_area :review %></p>
+  <%= f.submit %>
+<% end %>
