@@ -4,7 +4,7 @@
 <%= @restaurant.cuisine %> | <%= @restaurant.borough %><br>
 <%= link_to "View on Google Maps", "https://www.google.com/maps/search/#{@restaurant.address}" %>
 
-<p>Add menu item</p>
+<p><%= link_to "Add Food Review", new_restaurant_foodreview_path(@restaurant.id) %></p>
 
 <h3>What's good here?</h3>
 

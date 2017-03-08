@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'restaurants#index'
   resources :foods
+  resources :restaurants, only: [:show] do
+    resources :foodreviews, only: [:new, :create]
+  end
   resources :restaurants
+  resources :foodreviews
 end
