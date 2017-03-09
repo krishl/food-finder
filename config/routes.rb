@@ -2,10 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'restaurants#index'
-  resources :foods
-  resources :restaurants, only: [:show] do
-    resources :foodreviews, only: [:new, :create]
+  resources :restaurants do
+    resources :foods
   end
-  resources :restaurants
-  resources :foodreviews
 end
