@@ -18,7 +18,7 @@
     <%= f.check_box :_destroy %>
     <%= f.label :_destroy, 'delete' %></p>
 
-    <h3>Extra Details</h3>
+    <h3>Extra Menu Item Details</h3>
     <%= f.fields_for :foodreviews do |o| %>
       <p><%= o.label :price %>
       <%= o.text_field :price %></p>
@@ -28,7 +28,7 @@
       <%= o.text_area :review %></p>
     <% end %>
   <% end %>
-  <%= r.submit 'Add menu item', :name => "add_menu_item" %>
-  <%= r.submit 'Delete checked ingredients', :name => "remove_menu_item" %>
-  <%= r.submit %>
+  <%= r.submit "Add menu item", :name => "add_menu_item" %>
+  <%= r.submit "Delete checked menu item", :name => "remove_menu_item" %>
+  <%= r.submit "Create entry" %>
 <% end %>
