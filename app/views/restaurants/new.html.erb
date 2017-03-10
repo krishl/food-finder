@@ -1,5 +1,6 @@
 <h1>New Restaurant</h1>
 <%= form_for @restaurant do |r| %>
+  <%= r.hidden_field :id %>
   <p><%= r.label :name %>
   <%= r.text_field :name %></p>
   <p><%= r.label :address %>
@@ -11,24 +12,21 @@
   <p><%= r.label :cuisine %>
   <%= r.text_field :cuisine %></p>
 
-  <h3>Menu Items to Try</h3>
-  <%= r.fields_for :foods do |f| %>
-    <p><%= f.label :name, "Menu Item Name" %>
-    <%= f.text_field :name %>
-    <%= f.check_box :_destroy %>
-    <%= f.label :_destroy, 'delete' %></p>
+  <h3>Menu Item Details</h3>
+    <%= r.fields_for :foods do |f| %>
+      <%= f.hidden_field :id %>
+      <p><%= f.label :name, "Menu Item Name" %>
+      <%= f.text_field :name %></p>
+      <p><%= f.label :price %>
+      <%= f.text_field :price %></p>
 
-    <h3>Extra Menu Item Details</h3>
-    <%= f.fields_for :foodreviews do |o| %>
-      <p><%= o.label :price %>
-      <%= o.text_field :price %></p>
-      <p><%= o.label :rating, "Anticipation (1-5)" %>
-      <%= o.number_field :rating %></p>
-      <p><%= o.label :review, "Notes" %>
-      <%= o.text_area :review %></p>
-    <% end %>
+      <%= f.fields_for :restaurant_foods do |o| %>
+        <%= o.hidden_field :restaurant_id %>
+        <%= o.hidden_field :food_id %>
+        <p><%= o.label :item_type, "Menu Item Type" %>
+        <%= o.text_field :item_type %></p>
+      <br>
+      <% end %>
   <% end %>
-  <%= r.submit "Add menu item", :name => "add_menu_item" %>
-  <%= r.submit "Delete checked menu item", :name => "remove_menu_item" %>
   <%= r.submit "Create entry" %>
 <% end %>

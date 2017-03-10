@@ -1,5 +1,5 @@
 class Food < ApplicationRecord
-  has_many :foodreviews
-  has_many :restaurants, through: :foodreviews, :foreign_key => :restaurant_id
-  accepts_nested_attributes_for :foodreviews
+  has_many :restaurant_foods
+  has_many :restaurants, through: :restaurant_foods, :foreign_key => :restaurant_id
+  accepts_nested_attributes_for :restaurant_foods
 end
