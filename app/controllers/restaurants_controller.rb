@@ -10,11 +10,15 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+    if params[:add_menu_item]
+      @restaurant.foods.build.restaurant_foods.build
+    elsif params[:remove_menu_item]
     else
-      render :new
+      if @restaurant.save
+        redirect_to restaurant_path(@restaurant) and return
+      end
     end
+    render :new
   end
 
   def show

@@ -16,7 +16,9 @@
     <%= r.fields_for :foods do |f| %>
       <%= f.hidden_field :id %>
       <p><%= f.label :name, "Menu Item Name" %>
-      <%= f.text_field :name %></p>
+      <%= f.text_field :name %>
+      <%= f.check_box :_destroy %>
+      <%= f.label :_destroy, 'delete' %></p>
       <p><%= f.label :price %>
       <%= f.text_field :price %></p>
 
@@ -28,5 +30,7 @@
       <br>
       <% end %>
   <% end %>
+  <%= r.submit "Add menu item", :name => "add_menu_item" %>
+  <%= r.submit "Remove menu item", :name => "remove_menu_item" %>
   <%= r.submit "Create entry" %>
 <% end %>
