@@ -5,20 +5,16 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
-    @restaurant.foods.build.restaurant_foods.build
+    5.times { @restaurant.foods.build.restaurant_foods.build }
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if params[:add_menu_item]
-      @restaurant.foods.build.restaurant_foods.build
-    elsif params[:remove_menu_item]
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
     else
-      if @restaurant.save
-        redirect_to restaurant_path(@restaurant) and return
-      end
+      render :new
     end
-    render :new
   end
 
   def show
@@ -29,14 +25,24 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
 
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    if @restaurant.update_attributes(restaurant_params)
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    @restaurant.destroy
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.delete
     redirect_to :index
   end
 
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:id, :name, :address, :borough, :phone, :cuisine, foods_attributes: [:id, :name, :price, "_destroy", restaurant_foods_attributes: [:restaurant_id, :food_id, :item_type]])
+    params.require(:restaurant).permit(:name, :address, :borough, :phone, :cuisine, foods_attributes: [:id, :name, :price])
   end
 end
